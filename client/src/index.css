@@ -108,21 +108,21 @@ Main {
 }
 
 .video-container {
-  background-color: #f5f4f6;
   /* background: url("./assets/images/collage.jpg");
   background-size: cover; */
-  height: 85vh;
+  min-height: 85vh;
   overflow: hidden;
   position: relative;
 }
 
 /* ID'S */
 #jumbo-video {
+  background-color: #ffffff;
   z-index: -1;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 130%;
   position: absolute;
-  top: 97%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   opacity: 0.45;

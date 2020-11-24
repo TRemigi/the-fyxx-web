@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import FlipGallery from "../components/FlipGallery";
 
-const Home = () => {
+const Gallery = () => {
   return (
     <section className="row justify-content-center">
       <FlipGallery />
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Gallery;

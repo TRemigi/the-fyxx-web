@@ -12,7 +12,7 @@ import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
+import Gallery from "./pages/Gallery";
 import Landing from "./pages/Landing";
 
 const client = new ApolloClient({
@@ -36,7 +36,7 @@ function App() {
         <main className="container-fluid">
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile:username?" component={Profile} />
