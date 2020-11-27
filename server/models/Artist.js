@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const User = require("./User");
 
 const artistSchema = new Schema({
   firstName: {
@@ -31,7 +30,12 @@ const artistSchema = new Schema({
       ref: "ArtPiece",
     },
   ],
-  favoritedBy: [User.schema],
+  favoritedBy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Artist = model("Artist", artistSchema);

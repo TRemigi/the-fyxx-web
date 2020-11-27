@@ -1,16 +1,20 @@
 const { Schema, model } = require("mongoose");
-const Artist = require("./Artist");
-const Image = require("./Image");
 
 const artPieceSchema = new Schema({
-  artist: [Artist.schema],
-  name: {
+  artist: {
+    type: Schema.Types.ObjectId,
+    ref: "Artist",
+  },
+  pieceName: {
     type: String,
     required: true,
     trim: true,
-    default: "unnamed",
+    default: "Unnamed Artwork",
   },
-  image: [Image.schema],
+  image: {
+    type: Schema.Types.ObjectId,
+    ref: "Image",
+  },
   media: {
     type: String,
     required: true,

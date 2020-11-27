@@ -12,12 +12,10 @@ const imageSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
-  artPiece: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "ArtPiece",
-    },
-  ],
+  artPiece: {
+    type: Schema.Types.ObjectId,
+    ref: "ArtPiece",
+  },
 });
 
 const Image = model("Image", imageSchema);
