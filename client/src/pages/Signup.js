@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -40,48 +42,64 @@ const Signup = () => {
   };
 
   return (
-    <section className="row justify-content-center">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Sign Up</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your username"
-                name="username"
-                type="username"
-                id="username"
-                value={formState.username}
+    <Container>
+      <Row>
+        <Col>
+          <h4 className="p-3 mt-sm-2 mt-5 page-header">Signup</h4>
+          <Form className="p-4" onSubmit={handleFormSubmit}>
+            <Form.Group controlId="formBasicFirstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                name="firstName"
+                type="firstName"
+                placeholder="John"
+                value={formState.firstName}
                 onChange={handleChange}
               />
-              <input
-                className="form-input"
-                placeholder="Your email"
+            </Form.Group>
+            <Form.Group controlId="formBasicLastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                name="lastName"
+                type="lastName"
+                placeholder="Doe"
+                value={formState.lastName}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
                 name="email"
                 type="email"
-                id="email"
+                placeholder="email@place.com"
                 value={formState.email}
                 onChange={handleChange}
               />
-              <input
-                className="form-input"
-                placeholder="******"
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
                 name="password"
                 type="password"
-                id="password"
+                placeholder="12345678"
+                // id="password"
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
-                Submit
-              </button>
-            </form>
-            {error && <div>Sign up failed</div>}
-          </div>
-        </div>
-      </div>
-    </section>
+            </Form.Group>
+            <Button className="btn-border" variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+          {error && (
+            <div style={{ color: "red" }}>
+              Unable to create an account. Please try again.
+            </div>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

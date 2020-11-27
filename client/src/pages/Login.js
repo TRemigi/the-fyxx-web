@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import "bootstrap/dist/css/bootstrap.css";
+import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -41,39 +44,57 @@ const Login = (props) => {
   };
 
   return (
-    <section className="row justify-content-center">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Login</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your email"
-                name="email"
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <button className="btn d-block w-100" type="submit">
+    <main className="container">
+      <Container>
+        <Row>
+          <Col className="login mt-5">
+            <h4 className="p-3 mt-sm-2 page-header">Login</h4>
+            <Form className="login-form p-4" onSubmit={handleFormSubmit}>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Button
+                variant="primary"
+                type="submit"
+                className="login-submit btn-border"
+              >
                 Submit
-              </button>
-            </form>
-            {error && <div>Login failed</div>}
-          </div>
-        </div>
-      </div>
-    </section>
+              </Button>
+            </Form>
+            {error && (
+              <div style={{ color: "red" }}>
+                Login attempt failed. Please try again.
+              </div>
+            )}
+            <Card>
+              <Card.Body>
+                Need to create an account? Head to the{" "}
+                <Link to="/signup">signup</Link> page
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </main>
   );
 };
 

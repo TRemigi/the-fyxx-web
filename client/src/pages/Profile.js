@@ -5,9 +5,9 @@ import { useQuery } from "@apollo/react-hooks";
 import { QUERY_USER } from "../utils/queries";
 
 const Profile = () => {
-  const { username: userParam } = useParams();
+  const { _id: userParam } = useParams();
   const { loading, data } = useQuery(QUERY_USER, {
-    variables: { username: userParam },
+    variables: { _id: userParam },
   });
 
   const user = data?.user || {};
@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <section className="row justify-content-center">
       <h2 className="bg-dark text-secondary p-3 display-inline-block">
-        Viewing Placeholder's profile.
+        Viewing {user.firstName}'s profile.
       </h2>
     </section>
   );

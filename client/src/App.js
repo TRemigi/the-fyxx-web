@@ -39,7 +39,7 @@ function App() {
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/profile:username?" component={Profile} />
+            <Route exact path="/profile:user?" component={Profile} />
             <Route component={NoMatch} />
           </Switch>
         </main>
