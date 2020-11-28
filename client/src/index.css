@@ -1,4 +1,4 @@
-/* KEYFRAMES */
+/* KEYFRAMES A-Z */
 @keyframes shine {
   0% {
     transform: translateX(-100%);
@@ -8,26 +8,37 @@
   }
 }
 
-/* ELEMENTS */
+/* VARIABLES A-Z */
+:root {
+  --darker: #232527;
+  --gold: #dcc97e;
+}
+
+/* ELEMENTS A-Z */
 * {
-  z-index: 0;
+  color: var(--gold);
 }
 
 a {
-  color: #dcc97e !important;
+  color: var(--gold) !important;
 }
 
 body {
-  background-color: azure;
+  background-color: var(--darker) !important;
 }
 
 Main {
   min-height: 80vh;
 }
 
-/* CLASSES */
+/* CLASSES A-Z */
+.dropdown-menu .show {
+  z-index: 1 !important;
+}
+
 .gold-bar {
-  height: 0.4vh;
+  margin: 0;
+  height: 0.5vh;
   width: 100%;
   background: linear-gradient(to right, #b28e4d, #f9f19e, #b28e4d);
   z-index: 0;
@@ -40,9 +51,9 @@ Main {
   top: 0;
   transform: translateX(100%);
   width: 100%;
-  height: 0.4vh;
+  height: 0.5vh;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   animation: shine 5s infinite 1s;
 
   background: -moz-linear-gradient(
@@ -115,7 +126,7 @@ Main {
   position: relative;
 }
 
-/* ID'S */
+/* ID'S A-Z */
 #jumbo-video {
   background-color: #ffffff;
   z-index: -1;

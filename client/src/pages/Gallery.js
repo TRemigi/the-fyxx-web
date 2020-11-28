@@ -6,9 +6,9 @@ import FlipGallery from "../components/FlipGallery";
 
 const Gallery = () => {
   return (
-    <section className="row justify-content-center">
+    <>
       <FlipGallery />
-    </section>
+    </>
   );
 };
 

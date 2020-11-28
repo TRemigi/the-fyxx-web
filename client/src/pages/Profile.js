@@ -2,15 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
   const { _id: userParam } = useParams();
-  const { loading, data } = useQuery(QUERY_USER, {
+
+  let { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { _id: userParam },
   });
 
-  const user = data?.user || {};
+  const user = data?.me || data?.user || {};
   console.log(user);
 
   if (loading) {

@@ -2,9 +2,9 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_USER, QUERY_ME } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import GoldBar from "../GoldBar";
 
@@ -16,15 +16,13 @@ const Header = () => {
 
   const { _id: userParam } = useParams();
 
-  let { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  let { loading, data } = useQuery(QUERY_ME, {
     variables: { _id: userParam },
   });
 
-  let userLinkText = "";
+  const me = data?.me || {};
 
-  if (data) {
-    userLinkText = data.me.firstName;
-  }
+  let userLinkText = me.firstName;
 
   console.log(data);
 
@@ -48,9 +46,6 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto mr-3">
             <Nav.Link as={Link} to="/about">
-              {userLinkText}
-            </Nav.Link>
-            <Nav.Link as={Link} to="/about">
               About
             </Nav.Link>
             <Nav.Link as={Link} to="/gallery">
@@ -64,9 +59,15 @@ const Header = () => {
                 Log In
               </Nav.Link>
             ) : (
-              <Nav.Link as={Link} to="/login" onClick={logout}>
-                Log Out
-              </Nav.Link>
+              <NavDropdown title={userLinkText || ""} id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/profile">
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to="/login" onClick={logout}>
+                  Log Out
+                </NavDropdown.Item>
+              </NavDropdown>
             )}
           </Nav>
         </Navbar.Collapse>

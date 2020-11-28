@@ -44,7 +44,7 @@ const Login = (props) => {
   };
 
   return (
-    <main className="container">
+    <section className="row justify-content-center">
       <Container>
         <Row>
           <Col className="login mt-5">
@@ -67,7 +67,7 @@ const Login = (props) => {
                   name="password"
                   type="password"
                   placeholder="Password"
-                  id="password"
+                  // id="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
@@ -94,7 +94,7 @@ const Login = (props) => {
           </Col>
         </Row>
       </Container>
-    </main>
+    </section>
   );
 };
 

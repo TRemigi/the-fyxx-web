@@ -13,7 +13,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Gallery from "./pages/Gallery";
-import Landing from "./pages/Landing";
+import Home from "./pages/Home";
 
 const client = new ApolloClient({
   // retrieves token from local storage
@@ -35,7 +35,7 @@ function App() {
         <Header />
         <main className="container-fluid">
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />

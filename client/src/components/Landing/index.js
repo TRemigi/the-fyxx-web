@@ -1,12 +1,11 @@
 import React from "react";
-import Jumbo from "../components/Jumbo";
-import GoldBar from "../components/GoldBar";
+import Jumbo from "../Jumbo";
+import GoldBar from "../GoldBar";
 
 const Landing = () => {
   return (
     <section className="row justify-content-center">
       <Jumbo />
-      <GoldBar />
     </section>
   );
 };

@@ -42,64 +42,62 @@ const Signup = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h4 className="p-3 mt-sm-2 mt-5 page-header">Signup</h4>
-          <Form className="p-4" onSubmit={handleFormSubmit}>
-            <Form.Group controlId="formBasicFirstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                name="firstName"
-                type="firstName"
-                placeholder="John"
-                value={formState.firstName}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                name="lastName"
-                type="lastName"
-                placeholder="Doe"
-                value={formState.lastName}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="email@place.com"
-                value={formState.email}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                placeholder="12345678"
-                // id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Button className="btn-border" variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-          {error && (
-            <div style={{ color: "red" }}>
-              Unable to create an account. Please try again.
-            </div>
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <section className="row justify-content-center">
+      <Col>
+        <h4 className="p-3 mt-sm-2 mt-5 page-header">Signup</h4>
+        <Form className="p-4" onSubmit={handleFormSubmit}>
+          <Form.Group controlId="formBasicFirstName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              name="firstName"
+              type="firstName"
+              placeholder="John"
+              value={formState.firstName}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicLastName">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              name="lastName"
+              type="lastName"
+              placeholder="Doe"
+              value={formState.lastName}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              name="email"
+              type="email"
+              placeholder="email@place.com"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              name="password"
+              type="password"
+              placeholder="12345678"
+              // id="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button className="btn-border" variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+        {error && (
+          <div style={{ color: "red" }}>
+            Unable to create an account. Please try again.
+          </div>
+        )}
+      </Col>
+    </section>
   );
 };
 
