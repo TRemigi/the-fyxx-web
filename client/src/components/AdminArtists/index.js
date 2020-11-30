@@ -53,7 +53,7 @@ const AdminArtists = () => {
       <section className="row justify-content-center mt-5">
         {artists &&
           artists.map((artist) => (
-            <Card className="col-11 mb-5 admin-card">
+            <Card key={artist.firstName} className="col-11 mb-5 admin-card">
               <Card.Header className="text-center">
                 {artist.firstName} {artist.lastName}
               </Card.Header>
@@ -69,6 +69,9 @@ const AdminArtists = () => {
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="stats">Stats</Nav.Link>
+                      </Nav.Item>
+                      <Nav.Item>
+                        <Nav.Link eventKey="delete">Delete Artist</Nav.Link>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -91,9 +94,7 @@ const AdminArtists = () => {
                       </Tab.Pane>
                       <Tab.Pane eventKey="artPieces">
                         <Card.Body className="m-2">
-                          <Card.Text>
-                            <p>{artist.pieces.length} pieces</p>
-                          </Card.Text>
+                          <Card.Text>{artist.pieces.length} pieces</Card.Text>
                           {artist.pieces.map((piece) => (
                             <>
                               <Card.Title>{piece.pieceName}</Card.Title>
@@ -106,11 +107,15 @@ const AdminArtists = () => {
                       <Tab.Pane eventKey="stats">
                         <Card.Body className="m-2">
                           <Card.Text>
-                            <p>
-                              {artist.firstName} {artist.lastName} has been
-                              favorited by {artist.favoritedBy.length} users
-                            </p>
+                            {artist.firstName} {artist.lastName} has been
+                            favorited by {artist.favoritedBy.length} users
                           </Card.Text>
+                        </Card.Body>
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="delete">
+                        <Card.Body className="m-2">
+                          <Card.Title>Delete</Card.Title>
+                          <Button>Delete Artist</Button>
                         </Card.Body>
                       </Tab.Pane>
                     </Tab.Content>

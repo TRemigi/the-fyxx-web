@@ -14,17 +14,9 @@ const Header = () => {
     Auth.logout();
   };
 
-  const { _id: userParam } = useParams();
-
-  let { loading, data } = useQuery(QUERY_ME, {
-    variables: { _id: userParam },
-  });
+  let { loading, data } = useQuery(QUERY_ME);
 
   const me = data?.me || {};
-
-  let userFirstName = me.firstName;
-
-  console.log(data);
 
   return (
     <>
@@ -53,7 +45,7 @@ const Header = () => {
                 Log In
               </Nav.Link>
             ) : (
-              <NavDropdown title={userFirstName || ""} id="basic-nav-dropdown">
+              <NavDropdown title={me.firstName || ""} id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/profile">
                   Profile
                 </NavDropdown.Item>
