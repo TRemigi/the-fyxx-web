@@ -13,6 +13,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
+    userType: String
     faveArtists: [Artist]
     favePieces: [ArtPiece]
     cart: [ArtPiece]
@@ -46,6 +47,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(email: String!): User
+    userType(lastName: String!): [User]
     artists: [Artist]
     artist(email: String!): Artist
     artPieces: [ArtPiece]
@@ -62,6 +64,13 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    changeUserType(lastName: String!): User
+    addArtist(
+      firstName: String!
+      lastName: String!
+      email: String!
+      bio: String
+    ): Artist
   }
 `;
 

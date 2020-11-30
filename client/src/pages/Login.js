@@ -88,7 +88,10 @@ const Login = (props) => {
             <Card>
               <Card.Body>
                 Need to create an account? Head to the{" "}
-                <Link to="/signup">signup</Link> page
+                <Link to="/signup">
+                  <span>signup</span>
+                </Link>{" "}
+                page
               </Card.Body>
             </Card>
           </Col>

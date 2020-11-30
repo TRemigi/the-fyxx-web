@@ -22,19 +22,13 @@ const Header = () => {
 
   const me = data?.me || {};
 
-  let userLinkText = me.firstName;
+  let userFirstName = me.firstName;
 
   console.log(data);
 
   return (
     <>
-      <Navbar
-        className="navbar"
-        collapseOnSelect
-        expand="md"
-        bg="dark"
-        variant="dark"
-      >
+      <Navbar className="navbar" collapseOnSelect expand="md" bg="light">
         <Navbar.Brand as={Link} to="/">
           <img
             alt="fyxx scissor logo"
@@ -59,10 +53,15 @@ const Header = () => {
                 Log In
               </Nav.Link>
             ) : (
-              <NavDropdown title={userLinkText || ""} id="basic-nav-dropdown">
+              <NavDropdown title={userFirstName || ""} id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/profile">
                   Profile
                 </NavDropdown.Item>
+                {me.userType === "Admin" && (
+                  <NavDropdown.Item as={Link} to="/admin">
+                    Admin
+                  </NavDropdown.Item>
+                )}
                 <NavDropdown.Divider />
                 <NavDropdown.Item as={Link} to="/login" onClick={logout}>
                   Log Out

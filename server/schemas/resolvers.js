@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Artist } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -18,8 +18,14 @@ const resolvers = {
     users: async () => {
       return User.find().select("-__v -password");
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
+    user: async (parent, { email }) => {
+      return User.findOne({ email }).select("-__v -password");
+    },
+    userType: async (parent, { lastName }) => {
+      return (await User.findOne({ lastName })).isSelected("-__v -password");
+    },
+    artists: async () => {
+      return Artist.find().select("-__v");
     },
   },
   Mutation: {
@@ -44,6 +50,21 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    changeUserType: async (parent, { lastName, newType }) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { lastName: lastName },
+        newType,
+        {
+          new: true,
+        }
+      );
+      return updatedUser;
+    },
+    addArtist: async (parent, args) => {
+      const newArtist = await Artist.create(args);
+
+      return newArtist;
     },
   },
 };

@@ -4,13 +4,13 @@ const artistSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   lastName: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   email: {
@@ -23,6 +23,7 @@ const artistSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    default: "This artist doesn't have a bio yet.",
   },
   pieces: [
     {

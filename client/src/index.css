@@ -11,7 +11,7 @@
 /* VARIABLES A-Z */
 :root {
   --darker: #232527;
-  --gold: #dcc97e;
+  --gold: #b18d00;
 }
 
 /* ELEMENTS A-Z */
@@ -23,15 +23,43 @@ a {
   color: var(--gold) !important;
 }
 
-body {
-  background-color: var(--darker) !important;
+a span {
+  color: var(--darker);
+  text-decoration: underline;
 }
 
-Main {
+a span:hover {
+  font-size: 103%;
+}
+
+body {
+  background-color: #e9e9e9 !important;
+}
+
+main {
   min-height: 80vh;
 }
 
+main::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 13.6vh;
+  box-shadow: 0px 0 25px rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
 /* CLASSES A-Z */
+.admin-card {
+  min-height: 35vh;
+  color: var(--darker);
+  border-radius: 5px !important;
+  background: #e9e9e9 !important;
+  box-shadow: 8px 8px 18px #aaaaaa, -10px -8px 18px #ffffff;
+}
+
 .dropdown-menu .show {
   z-index: 1 !important;
 }
@@ -118,6 +146,47 @@ Main {
   width: auto;
 }
 
+.nav-pills .nav-link {
+  border: none;
+  text-align: center;
+  margin-top: 1.5vh;
+  border-radius: 25px !important;
+  background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
+  box-shadow: 5px 5px 8px #979797, -5px -5px 8px #ffffff;
+}
+
+.nav-pills .nav-link:hover {
+  border-radius: 50%;
+  background: #e9e9e9 !important;
+  box-shadow: 5px 5px 8px #979797, -5px -5px 8px #ffffff;
+}
+
+.nav-pills .nav-link.active {
+  background: #e9e9e9 !important;
+  box-shadow: inset 5px 5px 8px #979797, inset -5px -5px 8px #ffffff;
+}
+
+.btn,
+.btn-primary {
+  color: var(--gold) !important;
+  border: none !important;
+  text-align: center;
+  border-radius: 25px !important;
+  background: linear-gradient(145deg, #f9f9f9, #d2d2d2) !important;
+  box-shadow: 5px 5px 8px #979797, -5px -5px 8px #ffffff;
+}
+
+.btn-primary:hover {
+  border-radius: 50%;
+  background: #e9e9e9 !important;
+  box-shadow: 5px 5px 8px #979797, -5px -5px 8px #ffffff;
+}
+
+.neomorph-round .btn .btn-primary.active {
+  background: #e9e9e9 !important;
+  box-shadow: inset 5px 5px 8px #979797, inset -5px -5px 8px #ffffff;
+}
+
 .video-container {
   /* background: url("./assets/images/collage.jpg");
   background-size: cover; */
@@ -129,7 +198,7 @@ Main {
 /* ID'S A-Z */
 #jumbo-video {
   background-color: #ffffff;
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 130%;
   position: absolute;

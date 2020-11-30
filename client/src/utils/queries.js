@@ -7,6 +7,7 @@ export const QUERY_ME = gql`
       firstName
       lastName
       email
+      userType
       faveArtists {
         _id
       }
@@ -54,6 +55,24 @@ export const QUERY_USER = gql`
         _id
       }
       cart {
+        _id
+      }
+    }
+  }
+`;
+
+export const QUERY_ARTISTS = gql`
+  {
+    artists {
+      _id
+      firstName
+      lastName
+      email
+      bio
+      pieces {
+        _id
+      }
+      favoritedBy {
         _id
       }
     }

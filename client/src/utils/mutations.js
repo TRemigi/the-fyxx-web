@@ -37,3 +37,31 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_ARTIST = gql`
+  mutation addArtist(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $bio: String
+  ) {
+    addArtist(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      bio: $bio
+    ) {
+      _id
+      firstName
+      lastName
+      email
+      bio
+      pieces {
+        _id
+      }
+      favoritedBy {
+        _id
+      }
+    }
+  }
+`;

@@ -25,6 +25,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  userType: {
+    type: String,
+    default: "Base",
+  },
   faveArtists: [
     {
       type: Schema.Types.ObjectId,
