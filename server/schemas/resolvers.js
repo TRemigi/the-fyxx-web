@@ -1,4 +1,4 @@
-const { User, Artist } = require("../models");
+const { User, Artist, ArtPiece } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -65,6 +65,11 @@ const resolvers = {
       const newArtist = await Artist.create(args);
 
       return newArtist;
+    },
+    addArtPiece: async (parent, args) => {
+      const newArtPiece = await ArtPiece.create(args);
+
+      return newArtPiece;
     },
   },
 };

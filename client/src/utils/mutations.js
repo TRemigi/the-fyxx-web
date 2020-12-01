@@ -65,3 +65,29 @@ export const ADD_ARTIST = gql`
     }
   }
 `;
+
+export const ADD_ARTPIECE = gql`
+  mutation addArtPiece(
+    $artist: String!
+    $pieceName: String!
+    $media: String!
+    $price: Int
+  ) {
+    addArtPiece(
+      artist: $artist
+      pieceName: $pieceName
+      media: $media
+      price: $price
+    ) {
+      _id
+      artist {
+        _id
+        firstName
+        lastName
+      }
+      pieceName
+      media
+      price
+    }
+  }
+`;

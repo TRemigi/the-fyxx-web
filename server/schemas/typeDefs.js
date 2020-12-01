@@ -31,11 +31,12 @@ const typeDefs = gql`
 
   type ArtPiece {
     _id: ID
-    artist: [Artist]
+    artist: Artist
     pieceName: String
-    image: [Image]
+    image: Image
     media: String
     favoritedBy: [User]
+    price: Int
   }
 
   type Image {
@@ -71,6 +72,12 @@ const typeDefs = gql`
       email: String!
       bio: String
     ): Artist
+    addArtPiece(
+      artist: String!
+      pieceName: String!
+      media: String!
+      price: Int
+    ): ArtPiece
   }
 `;
 

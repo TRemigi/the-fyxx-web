@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_ARTISTS } from "../../utils/queries";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 import { Row, Col } from "react-bootstrap";
 
-import NewArtistForm from "../NewArtistForm";
+import NewArtistModal from "../NewArtistModal";
+import ImageUploadModal from "../ImageUploadModal";
+import NewArtPieceModal from "../NewArtPieceModal";
 
 const AdminArtists = () => {
   const { loading, data } = useQuery(QUERY_ARTISTS);
@@ -17,37 +18,39 @@ const AdminArtists = () => {
 
   console.log(artists);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [currentArtist, setCurrentArtist] = useState("");
+  const [showNewArtist, setShowNewArtist] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
+  const [showNewArtPiece, setShowNewArtPiece] = useState(false);
+
+  const handleAddArtPiece = (artistId) => {
+    console.log(artistId);
+    setCurrentArtist(artistId);
+    setShowNewArtPiece(true);
+  };
 
   return (
     <>
       <section className="row justify-content-center">
         <Button
           className="mr-auto mt-5 ml-5 neomorph-round"
-          onClick={handleShow}
+          onClick={() => setShowNewArtist(true)}
         >
           Add New Artist
         </Button>
-
-        <Modal show={show} onHide={handleClose} size="lg" centered>
-          <Modal.Header closeButton>
-            <Modal.Title>New Artist</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <NewArtistForm />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              className="col-12"
-              onClick={handleClose}
-            >
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <NewArtistModal
+          showNewArtist={showNewArtist}
+          setShowNewArtist={setShowNewArtist}
+        />
+        <ImageUploadModal
+          showUpload={showUpload}
+          setShowUpload={setShowUpload}
+        />
+        <NewArtPieceModal
+          showNewArtPiece={showNewArtPiece}
+          setShowNewArtPiece={setShowNewArtPiece}
+          artistId={currentArtist}
+        />
       </section>
 
       <section className="row justify-content-center mt-5">
@@ -94,14 +97,28 @@ const AdminArtists = () => {
                       </Tab.Pane>
                       <Tab.Pane eventKey="artPieces">
                         <Card.Body className="m-2">
-                          <Card.Text>{artist.pieces.length} pieces</Card.Text>
+                          <Button
+                            variant="primary"
+                            onClick={() => handleAddArtPiece(artist._id)}
+                            className="mr-2"
+                          >
+                            Add Art Piece
+                          </Button>
+                          <Button
+                            variant="primary"
+                            onClick={() => setShowUpload(true)}
+                          >
+                            Upload Images
+                          </Button>
+                          <Card.Text className="mt-4">
+                            {artist.pieces.length} pieces
+                          </Card.Text>
                           {artist.pieces.map((piece) => (
                             <>
                               <Card.Title>{piece.pieceName}</Card.Title>
                               <Card.Text>{piece.media}</Card.Text>
                             </>
                           ))}
-                          <Button variant="primary">Add Art Piece</Button>
                         </Card.Body>
                       </Tab.Pane>
                       <Tab.Pane eventKey="stats">

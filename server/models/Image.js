@@ -3,18 +3,13 @@
 const { Schema, model } = require("mongoose");
 
 const imageSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
+  artPiece: {
+    type: Schema.Types.ObjectId,
+    ref: "ArtPiece",
   },
   img: {
     data: Buffer,
     contentType: String,
-  },
-  artPiece: {
-    type: Schema.Types.ObjectId,
-    ref: "ArtPiece",
   },
 });
 
