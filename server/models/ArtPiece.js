@@ -20,6 +20,11 @@ const artPieceSchema = new Schema({
     required: true,
     trim: true,
   },
+  dimensions: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   favoritedBy: [
     {
       type: Schema.Types.ObjectId,
